@@ -12,13 +12,21 @@ TODO: will integrate in with JWT token permission as a microservice
 
     &lt;?xml version="1.0" encoding="UTF-8"?&gt;
     &lt;CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"&gt;
+
       &lt;CORSRule&gt;
+
         &lt;AllowedOrigin&gt;*&lt;/AllowedOrigin&gt;
+
         &lt;AllowedMethod&gt;GET&lt;/AllowedMethod&gt;
+
         &lt;AllowedMethod&gt;POST&lt;/AllowedMethod&gt;
+
         &lt;AllowedMethod&gt;PUT&lt;/AllowedMethod&gt;
+
         &lt;AllowedHeader&gt;*&lt;/AllowedHeader&gt;
+
       &lt;/CORSRule&gt;
+      
     &lt;/CORSConfiguration&gt;
 
 3. $ PORT=[PORT] AWS_ACCESS_KEY='[key]' AWS_SECRET_KEY='[secret]' S3_BUCKET='[bucket]' node index.js
