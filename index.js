@@ -1,17 +1,11 @@
 var express = require('express');
 var body_parser = require('body-parser')
-var http = require('http');
-var path = require('path');
 var crypto = require('crypto');
 var cors = require('cors');
 
 var app = express();
 app.set('port', process.env.PORT || 5000);
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(body_parser.json());
-app.use(body_parser.urlencoded({
-  extended: true
-}));
 
 var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
 var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
