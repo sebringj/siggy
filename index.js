@@ -17,11 +17,6 @@ var postUrl = 'https://' + S3_BUCKET + '.s3.amazonaws.com/'
 app.listen(app.get('port'));
 
 app.get('/sign_s3', cors(), function(req, res) {
-  if (typeof req.query.key !== 'string' || req.query.key.length <= 3)
-    return res.status(400).json({
-      err: 'bad request'
-    });
-
   var date = new Date();
   date.setTime(Date.now() + (30 * 60 * 1000));
   var isoDate = date.toISOString();
@@ -45,7 +40,6 @@ app.get('/sign_s3', cors(), function(req, res) {
   // sign the base64 encoded policy
   var signature = crypto.createHmac('sha1', AWS_SECRET_KEY)
     .update(new Buffer(base64Policy, 'utf-8')).digest('base64');
-
 
   res.json({
     policy: base64Policy,
