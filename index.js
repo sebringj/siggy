@@ -26,8 +26,8 @@ app.get('/sign_s3', cors(), function(req, res) {
     expiration: isoDate,
     conditions: [
       ['starts-with', '$key', prefix],
-			{ bucket: S3_BUCKET },
-			{ acl: 'public-read' },
+      { bucket: S3_BUCKET },
+      { acl: 'public-read' },
       ['starts-with', '$Content-Type', '']
     ]
   };
