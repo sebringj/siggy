@@ -1,12 +1,12 @@
-# sign S3
+# siggy
 
-Simple S3 signing of a URL to enable uploads via client-side.
+Simple S3-compatible signing of a URL to enable uploads via client-side.
 
 TODO: will integrate in with JWT token permission as a microservice
 
 ## Requirement
 
-1. Get an S3 account and get the key and secret
+1. Get your S3 account with the key, secret and bucket
 
 2. Your S3 bucket needs CORS setup with following XML entry:
 

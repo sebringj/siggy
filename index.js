@@ -10,9 +10,10 @@ app.use(body_parser.json());
 var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
 var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
 var S3_BUCKET = process.env.S3_BUCKET;
+var S3_URL = process.env.S3_URL || 's3.amazonaws.com';
 
 var prefix = 'uploads/';
-var postUrl = 'https://' + S3_BUCKET + '.s3.amazonaws.com/'
+var postUrl = 'https://' + S3_URL + '/' + S3_BUCKET;
 
 app.listen(app.get('port'));
 
@@ -24,12 +25,10 @@ app.get('/sign_s3', cors(), function(req, res) {
   var s3Policy = {
     expiration: isoDate,
     conditions: [
-      ['starts-with', '$key', prefix], {
-        bucket: S3_BUCKET
-      }, {
-        acl: 'public-read'
-      },
-      //['starts-with', '$Content-Type', '*']
+      ['starts-with', '$key', prefix],
+			{ bucket: S3_BUCKET },
+			{ acl: 'public-read' },
+      ['starts-with', '$Content-Type', '']
     ]
   };
 
@@ -45,7 +44,7 @@ app.get('/sign_s3', cors(), function(req, res) {
     policy: base64Policy,
     signature: signature,
     postUrl: postUrl,
-    baseUrl: postUrl + prefix,
+    baseUrl: postUrl + '/' + prefix,
     awsAccessKey: AWS_ACCESS_KEY
   });
 
