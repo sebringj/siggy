@@ -26,8 +26,6 @@ TODO: will integrate in with JWT token permission as a microservice
 
 4. Can access from other web apps to get temporary signature for client-side upload
 
-5. Use [https://github.com/sebringj/siggy](siggy)  microservice for file upload signing to S3 or S3 compatible server
-
 ## Start up
 
 ```
