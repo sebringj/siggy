@@ -22,10 +22,6 @@ TODO: will integrate in with JWT token permission as a microservice
       &lt;/CORSRule&gt;
     &lt;/CORSConfiguration&gt;
 
-3. $ PORT=[PORT] AWS_ACCESS_KEY='[key]' AWS_SECRET_KEY='[secret]' S3_BUCKET='[bucket]' node index.js
-
-4. Can access from other web apps to get temporary signature for client-side upload
-
 ## Start up
 
 ```
