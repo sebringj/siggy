@@ -30,14 +30,9 @@ TODO: will integrate in with JWT token permission as a microservice
 
 ```
 $ export AWS_ACCESS_KEY = '[your access key]'
-
 $ export AWS_SECRET_KEY = '[your secret]'
-
 $ export S3_BUCKET = '[your bucket]'
-
 (optional)
-
 $ export S3_HOSTNAME = 's3 hostname'
-
 $ node index.js
 ```
