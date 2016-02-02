@@ -25,3 +25,16 @@ TODO: will integrate in with JWT token permission as a microservice
 3. $ PORT=[PORT] AWS_ACCESS_KEY='[key]' AWS_SECRET_KEY='[secret]' S3_BUCKET='[bucket]' node index.js
 
 4. Can access from other web apps to get temporary signature for client-side upload
+
+## Start up
+
+$ export AWS_ACCESS_KEY = '[your access key]'
+
+$ export AWS_SECRET_KEY = '[your secret]'
+
+$ export S3_BUCKET = '[your bucket]'
+
+(optional defaults to 's3.amazonaws.com', dreamhost is 'objects.dreamhost.com')
+$ export S3_HOSTNAME = 's3 hostname'
+
+$ node index.js

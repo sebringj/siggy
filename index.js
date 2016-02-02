@@ -10,10 +10,10 @@ app.use(body_parser.json());
 var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
 var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
 var S3_BUCKET = process.env.S3_BUCKET;
-var S3_URL = process.env.S3_URL || 's3.amazonaws.com';
+var S3_HOSTNAME = process.env.S3_HOSTNAME || 's3.amazonaws.com';
 
 var prefix = 'uploads/';
-var postUrl = 'https://' + S3_URL + '/' + S3_BUCKET;
+var postUrl = 'https://' + S3_HOSTNAME + '/' + S3_BUCKET;
 
 app.listen(app.get('port'));
 
