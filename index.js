@@ -1,10 +1,10 @@
 var express = require('express');
-var body_parser = require('body-parser')
+var body_parser = require('body-parser');
 var crypto = require('crypto');
 var cors = require('cors');
 
 var app = express();
-app.set('port', process.env.PORT || 5000);
+var port = process.env.PORT || 5000;
 app.use(body_parser.json());
 
 var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
@@ -13,9 +13,7 @@ var S3_BUCKET = process.env.S3_BUCKET;
 var S3_HOSTNAME = process.env.S3_HOSTNAME || 's3.amazonaws.com';
 
 var prefix = 'uploads/';
-var postUrl = 'https://' + S3_HOSTNAME + '/' + S3_BUCKET;
-
-app.listen(app.get('port'));
+var postUrl = 'https://' + S3_BUCKET + '.' + S3_HOSTNAME;
 
 app.get('/sign_s3', cors(), function(req, res) {
   var date = new Date();
@@ -37,15 +35,17 @@ app.get('/sign_s3', cors(), function(req, res) {
   var base64Policy = Buffer(stringPolicy, 'utf-8').toString('base64');
 
   // sign the base64 encoded policy
-  var signature = crypto.createHmac('sha1', AWS_SECRET_KEY)
+  var base64Signature = crypto.createHmac('sha1', AWS_SECRET_KEY)
     .update(new Buffer(base64Policy, 'utf-8')).digest('base64');
 
   res.json({
     policy: base64Policy,
-    signature: signature,
+    signature: base64Signature,
     postUrl: postUrl,
     baseUrl: postUrl + '/' + prefix,
     awsAccessKey: AWS_ACCESS_KEY
   });
 
 });
+
+app.listen(port);
